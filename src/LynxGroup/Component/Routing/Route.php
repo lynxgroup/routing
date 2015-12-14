@@ -28,6 +28,24 @@ class Route extends Document
 		return isset($this->data['pattern']) ? $this->data['pattern'] : null;
 	}
 
+	public function setMethods(array $methods)
+	{
+		$_methods = [];
+
+		foreach($methods as $method) {
+			$_methods[] = $method;
+		}
+
+		$this->data['methods'] = $_methods;
+
+		return $this->setDirty();
+	}
+
+	public function getMethods()
+	{
+		return isset($this->data['methods']) ? $this->data['methods'] : [];
+	}
+
 	public function setController(array $controller)
 	{
 		$this->data['controller'] = $controller;
